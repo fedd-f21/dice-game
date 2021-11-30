@@ -21,6 +21,11 @@ const rollTheDice = function() {
   // Randomly assign a dice roll number
   const rollNum = getRandomDiceRoll()
 
+  // Consider:
+  // Can you write a condition, or series of conditions, that will result in using the word version of a number, rather than the digit. For example: "three" instead of "3"
+
+  
+
 
   ///////////// APPLYING RESULT TO UI /////////////
   // update textContent with rollNum
