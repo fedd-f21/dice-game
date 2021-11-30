@@ -6,13 +6,39 @@ const getRandomDiceRoll = function(sides=6) {
   return Math.floor( Math.random() * sides ) + 1
 }
 
-// Here's a test roll, check the console!
-console.log(getRandomDiceRoll())
 
-// 1) Call getRandomDiceRoll() and store the result as a variable named "diceRoll"
 
-// 2) Update user interface (document), showing the diceface (svg image) that matches the roll number
+const rollTheDice = function() {
 
-// 3) Use `diceRoll` to update the label "You rolled: #" (replacing # with the roll)
+  /////////////// SELECTING ELEMENTS ///////////////
+  // find the #message element
+  const eleMessage = document.querySelector(`#message`)
+  // find the #face element
+  const eleFace = document.querySelector(`#face`)
 
-// 4) Wrap the dice roll procedure in a function named rollTheDice(), call it from the console to test
+
+  ///////////////// ROLL THE DICE /////////////////
+  // Randomly assign a dice roll number
+  const rollNum = getRandomDiceRoll()
+
+
+  ///////////// APPLYING RESULT TO UI /////////////
+  // update textContent with rollNum
+  eleMessage.textContent = `You rolled: ${rollNum}`
+
+  // update the src attribute
+  // eleFace.src = `img/dice5.svg` // <<--- DONT DO IT THIS WAY
+  eleFace.setAttribute(`src`, `img/dice${rollNum}.svg`)
+
+  // update the alt attribute
+  eleFace.setAttribute(`alt`, `Dice face ${rollNum}`)
+
+
+  // THE END
+  return rollNum
+}
+
+// Select the button
+const eleRoll = document.querySelector(`#roll`)
+// When the button is clicked, callback to rollTheDice
+eleRoll.addEventListener(`click`, rollTheDice)
